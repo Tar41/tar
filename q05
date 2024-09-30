@@ -1,0 +1,49 @@
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+
+def q05():
+    # Step 1: Define the stock tickers and the start date
+    stocks = ['AAPL', 'WMT', 'IBM', 'MU', 'BA', 'AXP']  # Apple, Walmart, IBM, Micron Technology, Boeing, American Express
+    start_date = '2024-01-01'
+
+    # Step 2: Download the stock data
+    data = yf.download(stocks, start=start_date)['Adj Close']
+
+    # Step 3: Plot the adjusted close prices
+    plt.figure(figsize=(10, 7))  # Set figure size to 10 x 7 inches
+    data.plot()
+
+    # Step 4: Add chart decorations
+    plt.title('Adjusted Close Prices of Stocks since 1st Jan 2024')
+    plt.xlabel('Date')
+    plt.ylabel('Adjusted Close Price (USD)')
+
+    # Step 5: Save and show the line chart
+    plt.tight_layout()
+    plt.savefig('plot05.png', format='png')  # Save as plot05.png
+    plt.show()  # Show the chart
+
+Explanation of Your Code (for Exam Preparation)
+Stocks: Apple, Walmart, IBM, Micron Technology, Boeing, American Express
+Plot the adj close price of stock since 1st Jan 2024
+Output:
+Line chart (plot) of “Adj Close” of stock in the given list
+Size 10 x 7 inches
+File name (plot05.png)
+
+Define Stock Tickers and Start Date:
+
+The code defines a list of stock tickers (AAPL, WMT, IBM, etc.) and a start date of '2024-01-01' to fetch stock data from this date.
+Download Stock Data Using yfinance:
+
+It fetches the adjusted closing prices of the stocks starting from the given date using the yfinance library.
+Plot the Data:
+
+A line chart is created to plot the adjusted closing prices of the stocks over time. Each stock will be represented as a separate line.
+Add Chart Decorations:
+
+The chart is given a title and labeled with axis names for better understanding.
+Save and Display the Chart:
+
+The chart is saved as plot05.png and displayed.
