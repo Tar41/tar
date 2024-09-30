@@ -1,0 +1,46 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import requests
+
+def q04():  # Define histogram of price of the product that have the price less than 4,000
+    # Step 1: Fetch the data from the REST API
+    api_url = 'https://fakestoreapi.com/products'
+    data = requests.get(api_url).json()  # Get and parse the JSON data
+
+    # Step 2: Create DataFrame from products and extract prices
+    df = pd.json_normalize(data)
+
+    # Step 3: Filter products with price less than 4,000
+    filtered_data = df[df['price'] < 4000]
+
+    # Step 4: Plot a histogram of product prices
+    plt.figure(figsize=(10.4, 6.4))  # Set figure size
+    plt.hist(filtered_data['price'], bins=10, color='green', edgecolor='black')
+
+    # Step 5: Add title and labels
+    plt.title('Histogram of Product Prices Less Than 4,000')
+    plt.xlabel('Price (in USD)')
+    plt.ylabel('Number of Products')
+
+    # Step 6: Save and show the histogram
+    plt.tight_layout()
+    plt.savefig('hit04.png', format='png')
+    plt.show()
+
+
+Explanation of Your Code (for Exam Preparation)
+Fetch Data from the API:
+
+The code uses requests.get() to fetch product data from the provided API endpoint (https://fakestoreapi.com/products), which returns the data in JSON format.
+Create a DataFrame:
+
+The code converts the JSON data into a pandas DataFrame using pd.json_normalize(), which allows us to handle the nested structure of the JSON.
+Filter Data:
+
+Filters out products where the price is greater than or equal to 4,000 USD.
+Plot a Histogram:
+
+Creates a histogram of product prices with 10 bins, where each bar shows the count of products that fall within a certain price range.
+Save and Display the Histogram:
+
+The histogram is saved as hit04.png and displayed.
