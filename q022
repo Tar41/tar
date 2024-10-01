@@ -1,7 +1,11 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#Display Mastercard transaction amounts by shipping state
+#Horizontal Bar chart 
+#File name (q02.png)
 # Load data and filter for US transactions
+
 df = pd.read_csv(r'C:\Users\Asus\Downloads\transactions.csv').query("shippingCountry == 'US'")
 df.columns = df.columns.str.strip()  # Clean column names
 
