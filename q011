@@ -1,0 +1,31 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def q01():
+    # Load the data from the CSV file
+    file_path = r'C:\Users\Asus\Downloads\transactions.csv'
+    data = pd.read_csv(file_path)
+
+    # Ensure columns are clean
+    data.columns = data.columns.str.strip()
+
+    # Check for 'transactionCurrencyCode' column
+    if 'transactionCurrencyCode' in data.columns:
+        # Count transactions by currency
+        transaction_counts = data['transactionCurrencyCode'].value_counts()
+
+        # Plot the results
+        transaction_counts.plot(kind='bar', color='skyblue', figsize=(16, 6))
+
+        # Add title and labels
+        plt.title('Transactions by Currency Code')
+        plt.xlabel('Currency Code')
+        plt.ylabel('Number of Transactions')
+        plt.xticks(rotation=45, ha='right')
+
+        # Save and show the plot
+        plt.tight_layout()
+        plt.savefig('q01.png')
+        plt.show()
+    else:
+        print("Column 'transactionCurrencyCode' not found.")
