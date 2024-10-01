@@ -1,0 +1,60 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def q01():  # Define number of US transactions by states and calculate additional metrics
+    # Step 1: Load data and clean column names
+    file_path = r'C:\Users\Asus\Downloads\transactions.csv'  # Adjust the file path
+    data = pd.read_csv(file_path)
+    data.columns = data.columns.str.strip()  # Clean up column names
+
+    # Step 2: Filter for transactions with 'US' as the shipping country
+    us_data = data[data['shippingCountry'].str.upper() == 'US']
+
+    # Step 3: Count transactions by shipping state
+    transactions_by_state = us_data['shippingState'].value_counts()
+
+    # Step 4: Calculate sum and average transaction amount by state
+    transaction_sum_by_state = us_data.groupby('shippingState')['transactionAmountUSD'].sum()
+    transaction_avg_by_state = us_data.groupby('shippingState')['transactionAmountUSD'].mean()
+
+    # Step 5: Create bar charts for sum, average, and count of transactions
+
+    # Bar chart for number of transactions (count)
+    plt.figure(figsize=(10, 6))  # Set the figure size
+    transactions_by_state.plot(kind='bar', color='skyblue')
+    plt.title('Number of US Transactions by State')
+    plt.xlabel('State')
+    plt.ylabel('Number of Transactions')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.savefig('transactions_count.png', format='png')
+    plt.show()
+
+    # Bar chart for sum of transactions
+    plt.figure(figsize=(10, 6))
+    transaction_sum_by_state.plot(kind='bar', color='green')
+    plt.title('Total Transaction Amount by State (Sum)')
+    plt.xlabel('State')
+    plt.ylabel('Total Transaction Amount (USD)')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.savefig('transactions_sum.png', format='png')
+    plt.show()
+
+    # Bar chart for average transaction amount
+    plt.figure(figsize=(10, 6))
+    transaction_avg_by_state.plot(kind='bar', color='orange')
+    plt.title('Average Transaction Amount by State')
+    plt.xlabel('State')
+    plt.ylabel('Average Transaction Amount (USD)')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.savefig('transactions_avg.png', format='png')
+    plt.show()
+
+    # Print out sum and average values
+    print("Total transaction amount by state (Sum):")
+    print(transaction_sum_by_state)
+    
+    print("\nAverage transaction amount by state:")
+    print(transaction_avg_by_state)
