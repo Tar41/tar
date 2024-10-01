@@ -13,3 +13,5 @@ if __name__ == '__main__':
     # q04.q04()
     # q05.q05()
      #q06.q06()
+
+#pip install pandas matplotlib yfinance requests
