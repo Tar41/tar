@@ -15,3 +15,4 @@ if __name__ == '__main__':
      #q06.q06()
 
 #pip install pandas matplotlib yfinance requests
+https://github.com/copilot/c/3015cc9b-e784-4498-83b0-046d68e66155
