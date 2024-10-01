@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def q01():  # Define number of US transactions by states
+def q01(): #Define number of US transactions by states
     # Step 1: Load data and clean column names
     file_path = r'C:\Users\Asus\Downloads\transactions.csv'  # Adjust the file path
     data = pd.read_csv(file_path)
