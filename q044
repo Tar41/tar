@@ -1,0 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def q04():#Define histogram of transaction amount that have the transaction amount less than 1,000 USD
+#Histogram
+#10 bins
+#File name (q04.png)
+
+    # Load the data from the CSV file
+    file_path = r'C:\Users\Asus\Downloads\transactions.csv'  # Use raw string notation to avoid issues with backslashes
+    data = pd.read_csv(file_path)
+
+    # Clean column names by stripping any leading/trailing spaces (if needed)
+    data.columns = data.columns.str.strip()
+
+    # Check if the required column exists
+    if 'transactionAmountUSD' in data.columns:
+        # Filter transactions where the amount is less than 1000 USD
+        filtered_data = data[data['transactionAmountUSD'] < 1000]
+
+        # Plot a histogram with 10 bins
+        plt.figure(figsize=(10, 6))  # Set figure size
+        plt.hist(filtered_data['transactionAmountUSD'], bins=10, edgecolor='black')
+
+        # Adding titles and labels
+        plt.title('Histogram of Transaction Amounts Less Than 1,000 USD', fontsize=14)
+        plt.xlabel('Transaction Amount (USD)', fontsize=12)
+        plt.ylabel('Frequency', fontsize=12)
+
+        # Save the figure as an image file
+        plt.tight_layout()
+        plt.savefig('q04.png', format='png')
+
+        # Show the plot
+        plt.show()
+
+    else:
+        print("The 'transactionAmountUSD' column is not found. Please check the column names and adjust the script.")
+
+# Call the q04 function
+q04()
