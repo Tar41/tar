@@ -1,0 +1,45 @@
+import matplotlib.pyplot as plt
+
+def q03():#Define the pie chart of product brands.
+#Pie chart
+#Green color shade
+#File name (q03.png)
+
+    # Sample data for product brands
+    products = [
+        {"brand": "Brand A"},
+        {"brand": "Brand B"},
+        {"brand": "Brand A"},
+        {"brand": "Brand C"},
+        {"brand": "Brand B"},
+        {"brand": "Brand C"},
+        {"brand": "Brand A"},
+        {"brand": "Brand B"},
+        {"brand": "Brand D"}
+    ]
+
+    # Extract brands from the data
+    brands = [product.get("brand", "Unknown") for product in products]
+
+    # Count the occurrence of each brand
+    brand_counts = {}
+    for brand in brands:
+        if brand in brand_counts:
+            brand_counts[brand] += 1
+        else:
+            brand_counts[brand] = 1
+
+    # Generate the pie chart
+    plt.figure(figsize=(8, 6))
+    plt.pie(brand_counts.values(), labels=brand_counts.keys(), autopct='%1.1f%%', startangle=90, colors=plt.cm.Greens(range(len(brand_counts))))
+    plt.title("Distribution of Product Brands")
+    plt.axis('equal')  # Equal aspect ratio ensures that pie chart is drawn as a circle.
+
+    # Save the chart as a PNG file
+    plt.savefig('q03.png')
+
+    # Show the plot
+    plt.show()
+
+# Call the q03 function
+q03()
