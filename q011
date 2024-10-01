@@ -1,7 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def q01():
+def q01(): #Define Total amount of transactions by transaction currency code
+#Bar chart 
+#Size 16.4 x 6.4 inches
+
     # Load the data from the CSV file
     file_path = r'C:\Users\Asus\Downloads\transactions.csv'
     data = pd.read_csv(file_path)
