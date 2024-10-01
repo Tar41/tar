@@ -1,0 +1,35 @@
+Function: q01()
+This function loads transaction data from a CSV file, filters for transactions in the United States, and visualizes the number of transactions per US state using a bar chart. The chart is saved as a PNG file.
+
+Steps:
+Load and clean the data:
+Load a CSV file and remove any extra spaces from column names.
+Filter for US transactions:
+The data is filtered to include only transactions where the shipping country is "US".
+Count transactions by state:
+The function counts how many transactions occurred for each shipping state.
+Create a bar chart:
+A bar chart is generated, showing the number of transactions per state.
+Save and display the chart:
+The chart is saved as a PNG file (mychart01.png) and displayed.
+Requirements:
+Libraries: pandas, matplotlib
+Data: A CSV file containing transaction data with at least the following columns:
+shippingCountry: The country where the product was shipped.
+shippingState: The state where the product was shipped (for US transactions).
+transactionAmountUSD: The transaction amount.
+
+Function: q02()
+This function visualizes the total transaction amounts of VISA card payments grouped by shipping country using a horizontal bar chart.
+
+Key Features:
+Load CSV Data: Reads transaction data from a CSV file.
+Filter for VISA Transactions: Filters the data to include only transactions made with VISA cards.
+Group by Shipping Country: Sums the total transaction amounts for each shipping country.
+Create Horizontal Bar Chart: Visualizes the top 20 countries based on total VISA transaction amounts.
+Save the Chart: The chart is saved as mychart02.png.
+Data Requirements:
+The CSV file should contain at least the following columns:
+shippingCountry: Country where the product was shipped.
+cardType: Type of the payment card (e.g., VISA, MasterCard).
+transactionAmountUSD: Transaction amount in USD.
