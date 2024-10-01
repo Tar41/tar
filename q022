@@ -1,0 +1,24 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load data and filter for US transactions
+df = pd.read_csv(r'C:\Users\Asus\Downloads\transactions.csv').query("shippingCountry == 'US'")
+df.columns = df.columns.str.strip()  # Clean column names
+
+# Check necessary columns and filter Mastercard transactions
+if all(col in df.columns for col in ['cardType', 'shippingState', 'transactionAmountUSD']):
+    mastercard_data = df[df['cardType'].str.contains('MC', case=False, na=False)]
+
+    if not mastercard_data.empty:
+        # Group by shipping state and sum the transaction amounts
+        amount_by_state = mastercard_data.groupby('shippingState')['transactionAmountUSD'].sum()
+
+        # Plot the results
+        amount_by_state.plot(kind='barh', figsize=(16.4, 10), title='Mastercard (MC) Transaction Amounts by State')
+        plt.xlabel('Transaction Amount (USD)')
+        plt.ylabel('Shipping State')
+        plt.tight_layout()
+
+        # Save and show the plot
+        plt.savefig('q02_all.png')
+        plt.show()
